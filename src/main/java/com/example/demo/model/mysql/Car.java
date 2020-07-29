@@ -18,7 +18,11 @@ public class Car {
     @Column(nullable = false)
     private String model;
 
-    public Car(String model) {
+    public Car(String model, boolean exception) throws RuntimeException {
+        if (exception) {
+            throw new RuntimeException();
+        }
+
         this.model = model;
     }
 

@@ -18,7 +18,11 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    public User(String name) {
+    public User(String name, boolean exception) throws RuntimeException {
+        if (exception) {
+            throw new RuntimeException();
+        }
+
         this.name = name;
     }
 

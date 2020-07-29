@@ -12,8 +12,10 @@ public class TransactionManagerConfiguration {
     @Bean(name = "chainedTransactionManager")
     public ChainedTransactionManager transactionManager(
             @Qualifier("postgresTransactionManager") PlatformTransactionManager postgresTransactionManager,
-            @Qualifier("mysqlTransactionManager") PlatformTransactionManager mysqlTransactionManager) {
-        return new ChainedTransactionManager(postgresTransactionManager, mysqlTransactionManager);
+            @Qualifier("mysqlTransactionManager") PlatformTransactionManager mysqlTransactionManager,
+            @Qualifier("mongodbTransactionManager") PlatformTransactionManager mongodbTransactionManager) {
+        return new ChainedTransactionManager(postgresTransactionManager, mysqlTransactionManager,
+                mongodbTransactionManager);
     }
 
 }
